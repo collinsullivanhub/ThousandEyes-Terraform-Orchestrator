@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ThousandEyes Terraform Orchestrator</title>
+    <style>
+    
+    .center-text {
+      text-align: center;
+    }
+
+    .fade-in-image {
+      
+      opacity: 0;
+      animation: fadeIn 7s forwards linear infinite; 
+      
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+
+    h1 {
+        color: rgb(255, 119, 0);
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 36px;
+        line-height: 1.6;
+      }
+      body {
+        background-color: #000000;
+        position: relative;
+        padding-top: 10px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      
+      .image-container {
+        place-items: center;
+        padding-bottom: 20px;
+        width: 100px;
+    }
+  
+      img {;
+        width: 200px;
+      }
+
+    legend, label {
+      color: rgb(107, 109, 235);
+    }
+    </style>
+</head>
+
+<body>
+
+<div class="image-container">
+    <img class="fade-in-image" src="te_logo.png" alt="ThousandEyes Logo">
+</div>   
+
+  <script>
+    function fadeIn(element) {
+      let opacity = 0;
+      const interval = setInterval(function() {
+        opacity += 0.05;
+        element.style.opacity = opacity;
+        if (opacity >= 1) clearInterval(interval);
+      }, 50);
+    }
+    const img = document.querySelector('.fade-in-image');
+    window.addEventListener('scroll', function() {
+      const imgPosition = img.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.5;
+      if (imgPosition < screenPosition) {
+        fadeIn(img);
+      }
+    });
+  </script>
+
+
+  <form>
+    <fieldset>
+      <legend>Select Cloud Regions</legend>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="us-east-1"> AWS US East (N. Virginia)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="us-east-2"> AWS US East (Ohio)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="us-west-1"> US West (N. California)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="us-west-2"> us-west-2 US West (Oregon)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="af-south-1"> AWS Africa (Cape Town)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-east-1"> AWS Asia Pacific (Hong Kong)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-east-1"> AWS Asia Pacific (Mumbai)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-northeast-3"> AWS Asia Pacific (Osaka-Local)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-northeast-2"> AWS Asia Pacific (Seoul)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-southeast-1"> AWS Asia Pacific (Singapore)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-southeast-2"> AWS Asia Pacific (Sydney)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ap-northeast-1"> AWS Asia Pacific (Tokyo)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="ca-central-1"> AWS Canada (Central)
+      </label>
+      <!---->
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="cn-north-1"> AWS China (Beijing)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="cn-northwest-1"> AWS China (Ningxia)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="eu-central-1"> AWS Europe (Frankfurt)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="eu-west-1"> AWS Europe (Ireland)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="eu-west-2"> AWS Europe (London)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="eu-south-1"> AWS Europe (Milan)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="eu-west-3"> AWS Europe (Paris)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="eu-north-1"> AWS Europe (Stockholm)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="me-south-1"> AWS Middle East (Bahrain)
+      </label>
+      <label>
+        <input type="checkbox" name="aws_regions[]" value="sa-east-1"> AWS South America (São Paulo)
+      </label><br>
+      <label>
+      </label><br>
+
+      <!-- Add checkboxes for all Azure regions here -->
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="eastus"> Azure East US
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="eastus2"> Azure East US 2
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="centralus"> Azure Central US
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="southcentralus"> Azure South Central US
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="westus"> Azure West US
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="westus2"> Azure West US 2
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="northcentralus"> Azure North Central US
+      </label>
+      <label>
+        <input type="checkbox" name="azure_regions[]" value="eastasia"> Azure East Asia
+      </label><br>
+      <label>
+      </label><br>
+
+      <!-- Add checkboxes for all Google Cloud Platform regions here -->
+    <label>
+    <input type="checkbox" name="gcp_regions[]" value="us-west1"> GCP US West 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="us-west2"> GCP US West 2
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="us-central1"> GCP US Central 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="us-east1"> GCP US East 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="us-east4"> GCP US East 4
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="europe-west1"> GCP Europe West 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="europe-west2"> GCP Europe West 2
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="europe-west3"> GCP Europe West 3
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="europe-west4"> GCP Europe West 4
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="europe-north1"> GCP Europe North 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="asia-east1"> GCP Asia East 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="asia-northeast1"> GCP Asia Northeast 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="asia-northeast2"> GCP Asia Northeast 2
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="asia-southeast1"> GCP Asia Southeast 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="asia-south1"> GCP Asia South 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="australia-southeast1"> GCP Australia Southeast 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="southamerica-east1"> GCP South America East 1
+    </label>
+    <label>
+      <input type="checkbox" name="gcp_regions[]" value="northamerica-northeast1"> GCP North America Northeast 1
+    </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Proxy Information</legend>
+      <label>Proxy URL:</label>
+      <input type="text" name="proxy_url">
+    </fieldset>
+
+    <fieldset>
+      <legend>ThousandEyes Account Group Token</legend>
+      <label>AG Token:</label>
+      <input type="text" name="ag_token">
+    </fieldset>
+
+    <input type="submit" value="Submit">
+
+  </form>
+</body>
+
+  <!-- Add an element that triggers the sound on click -->
+  <button onclick="playSound()">Play cool space tunes!</button>
+
+  <!-- Add the audio element with the sound file -->
+  <audio id="myAudio">
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Add the JavaScript to handle sound playback -->
+  <script>
+    function playSound() {
+      const audio = document.getElementById("myAudio");
+      audio.play();
+    }
+  </script>
+
+
+</html>
